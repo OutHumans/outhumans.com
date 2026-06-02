@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OutHumans — 404: Human Not Found</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --black: #080808;
+    --green: #39ff7a;
+    --green-dim: #1aff5e18;
+    --white: #f0f0ec;
+    --gray: #777770;
+    --mono: 'Space Mono', monospace;
+    --sans: 'Syne', sans-serif;
+  }
+
+  html, body {
+    width: 100%;
+    min-height: 100%;
+    background: var(--black);
+    color: var(--white);
+    font-family: var(--sans);
+    overflow-x: hidden;
+  }
+
+  body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: clamp(1.5rem, 5vw, 3rem) clamp(1rem, 4vw, 2rem);
+    position: relative;
+  }
+
+  body::after {
+    content: '';
+    position: fixed;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: min(600px, 100vw);
+    height: min(600px, 100vw);
+    background: radial-gradient(ellipse, #39ff7a14 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .scanlines {
+    position: fixed;
+    inset: 0;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(0,0,0,0.025) 2px,
+      rgba(0,0,0,0.025) 4px
+    );
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .corner {
+    position: fixed;
+    width: 32px;
+    height: 32px;
+    opacity: 0.25;
+  }
+  .corner-tl { top: 20px; left: 20px; border-top: 1px solid var(--green); border-left: 1px solid var(--green); }
+  .corner-tr { top: 20px; right: 20px; border-top: 1px solid var(--green); border-right: 1px solid var(--green); }
+  .corner-bl { bottom: 20px; left: 20px; border-bottom: 1px solid var(--green); border-left: 1px solid var(--green); }
+  .corner-br { bottom: 20px; right: 20px; border-bottom: 1px solid var(--green); border-right: 1px solid var(--green); }
+
+  .container {
+    position: relative;
+    z-index: 1;
+    max-width: 640px;
+    width: 100%;
+    text-align: center;
+  }
+
+  .error-code {
+    font-family: var(--mono);
+    font-size: clamp(72px, 22vw, 160px);
+    font-weight: 700;
+    color: var(--green);
+    letter-spacing: -0.03em;
+    line-height: 1;
+    text-shadow: 0 0 60px #39ff7a44, 0 0 120px #39ff7a1a;
+    opacity: 0;
+    animation: fadeUp 0.7s ease forwards 0.1s;
+  }
+
+  .status-line {
+    font-family: var(--mono);
+    font-size: clamp(9px, 2.5vw, 11px);
+    letter-spacing: 0.18em;
+    color: var(--green);
+    text-transform: uppercase;
+    margin: 0.75rem 0 2rem;
+    opacity: 0;
+    animation: fadeUp 0.7s ease forwards 0.3s;
+  }
+
+  .status-line span {
+    display: inline-block;
+    width: 7px;
+    height: 7px;
+    background: var(--green);
+    border-radius: 50%;
+    margin-right: 8px;
+    vertical-align: middle;
+    animation: blink 1.2s step-end infinite;
+  }
+
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+  }
+
+  .headline {
+    font-family: var(--sans);
+    font-size: clamp(20px, 5.5vw, 38px);
+    font-weight: 800;
+    color: var(--white);
+    line-height: 1.2;
+    margin-bottom: 1.25rem;
+    opacity: 0;
+    animation: fadeUp 0.7s ease forwards 0.45s;
+  }
+
+  .headline em {
+    font-style: normal;
+    color: var(--green);
+  }
+
+  .description {
+    font-family: var(--sans);
+    font-size: clamp(14px, 3vw, 16px);
+    font-weight: 400;
+    color: var(--gray);
+    line-height: 1.8;
+    max-width: 460px;
+    margin: 0 auto 2.25rem;
+    opacity: 0;
+    animation: fadeUp 0.7s ease forwards 0.6s;
+  }
+
+  .tags {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 2.75rem;
+    opacity: 0;
+    animation: fadeUp 0.7s ease forwards 0.75s;
+  }
+
+  .tag {
+    font-family: var(--mono);
+    font-size: clamp(9px, 2vw, 11px);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 6px 12px;
+    border: 0.5px solid #39ff7a44;
+    border-radius: 2px;
+    color: var(--green);
+    background: var(--green-dim);
+    white-space: nowrap;
+  }
+
+  .cta-wrap {
+    opacity: 0;
+    animation: fadeUp 0.7s ease forwards 0.9s;
+  }
+
+  .cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--mono);
+    font-size: clamp(11px, 3vw, 13px);
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--black);
+    background: var(--green);
+    border: none;
+    padding: clamp(13px, 3vw, 16px) clamp(20px, 5vw, 32px);
+    border-radius: 2px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.2s ease, box-shadow 0.2s ease, transform 0.15s ease;
+    box-shadow: 0 0 28px #39ff7a44;
+  }
+
+  .cta:hover {
+    background: #ffffff;
+    box-shadow: 0 0 50px #39ff7a88;
+    transform: translateY(-2px);
+  }
+
+  .cta:active { transform: translateY(0); }
+
+  .divider {
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #39ff7a33, transparent);
+    margin: 3rem 0 1.75rem;
+    opacity: 0;
+    animation: fadeUp 0.7s ease forwards 1.05s;
+  }
+
+  .footer {
+    font-family: var(--mono);
+    font-size: clamp(9px, 2.2vw, 11px);
+    color: #3a3a36;
+    letter-spacing: 0.1em;
+    line-height: 2;
+    opacity: 0;
+    animation: fadeUp 0.7s ease forwards 1.15s;
+  }
+
+  .footer a {
+    color: #39ff7a55;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .footer a:hover { color: var(--green); }
+
+  .footer .rights {
+    display: block;
+    margin-top: 0.5rem;
+    font-size: clamp(8px, 1.8vw, 10px);
+    color: #2a2a27;
+    letter-spacing: 0.08em;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  @media (max-width: 400px) {
+    .corner { display: none; }
+    .tags { gap: 6px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="scanlines"></div>
+<div class="corner corner-tl"></div>
+<div class="corner corner-tr"></div>
+<div class="corner corner-bl"></div>
+<div class="corner corner-br"></div>
+
+<div class="container">
+
+  <div class="error-code">404</div>
+
+  <div class="status-line">
+    <span></span>human not found — system nominal
+  </div>
+
+  <h1 class="headline">
+    Tu operación de marketing<br>
+    ya fue <em>abducida.</em>
+  </h1>
+
+  <p class="description">
+    Marketing Ops, Ecommerce, Ads y Agentes AI que trabajan mientras duermes.
+    Los humanos descansan. OutHumans no.
+  </p>
+
+  <div class="tags">
+    <span class="tag">Marketing Ops</span>
+    <span class="tag">Ecommerce</span>
+    <span class="tag">Paid Ads</span>
+    <span class="tag">Agentes AI</span>
+  </div>
+
+  <div class="cta-wrap">
+    <a href="mailto:404@outhumans.com" class="cta">
+      → Iniciar transmisión
+    </a>
+  </div>
+
+  <div class="divider"></div>
+
+  <p class="footer">
+    <a href="mailto:404@outhumans.com">404@outhumans.com</a>
+    &nbsp;·&nbsp;
+    outhumans.com
+    <span class="rights">© 2026 OutHumans — Todos los derechos reservados en todo el universo.</span>
+  </p>
+
+</div>
+</body>
+</html>
