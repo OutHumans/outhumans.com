@@ -912,20 +912,7 @@ document.querySelectorAll('.faq-item').forEach(item => {
   });
 });
 
-// Mailto fallback — ensures all email buttons work across all environments
-document.querySelectorAll('a[href^="mailto:"]').forEach(link => {
-  link.addEventListener('click', function(e) {
-    e.preventDefault();
-    const email = '404@outhumans.com';
-    const subject = encodeURIComponent('Diagnóstico OutHumans');
-    const body = encodeURIComponent('Hola, me interesa el diagnóstico gratuito de OutHumans.');
-    try {
-      window.location.href = 'mailto:' + email + '?subject=' + subject + '&body=' + body;
-    } catch(err) {
-      window.open('mailto:' + email + '?subject=' + subject, '_blank');
-    }
-  });
-});
+
 </script>
 
 </body>
