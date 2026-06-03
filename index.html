@@ -191,7 +191,7 @@ nav {
 .mob-menu a:hover { color:var(--g); }
 
 /* ─── Buttons ─── */
-.btn  { display:inline-flex; align-items:center; gap:10px; font-family:var(--mono); font-weight:500; letter-spacing:.08em; text-transform:uppercase; border-radius:var(--r); text-decoration:none; transition:background .2s, transform .15s, box-shadow .2s; }
+.btn  { display:inline-flex; align-items:center; gap:10px; font-family:var(--mono); font-weight:500; letter-spacing:.08em; text-transform:uppercase; border-radius:var(--r); text-decoration:none; cursor:pointer; transition:background .2s, transform .15s, box-shadow .2s; -webkit-tap-highlight-color:transparent; }
 .btn-g { font-size:clamp(12px,2vw,13px); color:var(--bg); background:var(--g); padding:clamp(14px,2.5vw,17px) clamp(22px,4vw,32px); animation:pulse 3.5s ease-in-out infinite; }
 .btn-g:hover { background:#fff; transform:translateY(-2px); animation:none; box-shadow:0 10px 36px rgba(57,255,122,.22); }
 .btn-o { font-size:clamp(12px,2vw,12px); color:var(--t2); background:transparent; padding:clamp(14px,2.5vw,17px) clamp(22px,4vw,32px); border:var(--border); }
@@ -346,6 +346,19 @@ footer { border-top:var(--border); padding:2rem clamp(1.25rem,5vw,2.75rem); }
   .sdiv    { display:none; }
   .h-stats { gap:1.75rem; }
 }
+
+/* ─── CERTIFICACIONES ─── */
+#certs { background:var(--bg1); }
+
+.certs-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(min(100%,220px),1fr)); gap:1px; background:rgba(234,234,230,.06); border:var(--border); border-radius:var(--r); overflow:hidden; margin-top:2.75rem; }
+.cert-card { background:var(--bg); padding:1.5rem 1.25rem; display:flex; flex-direction:column; gap:.75rem; transition:background .2s; }
+.cert-card:hover { background:var(--bg2); }
+.cert-badge { width:36px; height:36px; border:var(--border); border-radius:6px; background:var(--bg2); display:grid; place-items:center; }
+.cert-badge svg { color:var(--g); }
+.cert-org  { font-family:var(--mono); font-size:9px; letter-spacing:.18em; text-transform:uppercase; color:var(--g); opacity:.5; }
+.cert-name { font-size:15px; font-weight:700; color:var(--t1); line-height:1.25; }
+.cert-desc { font-size:12px; color:var(--t2); line-height:1.55; }
+.cert-highlight { display:inline-block; font-family:var(--mono); font-size:10px; letter-spacing:.1em; text-transform:uppercase; color:var(--g); background:var(--g-faint); padding:4px 10px; border-radius:20px; border:1px solid var(--g-line); margin-top:2px; }
 </style>
 </head>
 <body>
@@ -552,6 +565,85 @@ footer { border-top:var(--border); padding:2rem clamp(1.25rem,5vw,2.75rem); }
   </div>
 </section>
 
+
+<hr class="sep">
+
+<!-- ═══ CERTIFICACIONES ═══ -->
+<section id="certs">
+  <div class="wrap">
+
+    <div class="r">
+      <p class="chip">Credenciales verificables</p>
+      <h2 class="H">No solo experiencia.<br><em>Certificaciones reales</em><br>que respaldan el trabajo.</h2>
+      <p class="P">Somos parte del grupo de agencias certificadas más selectivo de LATAM en Shopify, Klaviyo, Meta y Google. No es un badge de la web — es trabajo acumulado y evaluado.</p>
+    </div>
+
+    <div class="certs-grid">
+
+      <div class="cert-card r d1">
+        <div class="cert-badge">
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/></svg>
+        </div>
+        <div class="cert-org">Shopify · LATAM</div>
+        <div class="cert-name">Shopify Education Partner</div>
+        <div class="cert-desc">Parte de la primera agencia certificada como Shopify Education Partner en LATAM. Una de las certificaciones más selectivas de Shopify a nivel regional.</div>
+        <span class="cert-highlight">Primera agencia en LATAM</span>
+      </div>
+
+      <div class="cert-card r d2">
+        <div class="cert-badge">
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+        </div>
+        <div class="cert-org">Klaviyo</div>
+        <div class="cert-name">Klaviyo Expert Certificado</div>
+        <div class="cert-desc">Certificación oficial de Klaviyo como Expert en email marketing, automatización de flujos y segmentación avanzada para Ecommerce. No es un curso — es evaluación de casos reales.</div>
+        <span class="cert-highlight">Klaviyo Expert</span>
+      </div>
+
+      <div class="cert-card r d3">
+        <div class="cert-badge">
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><path d="M8 21h8M12 17v4"/></svg>
+        </div>
+        <div class="cert-org">Meta · Facebook</div>
+        <div class="cert-name">Meta Ads Certificado</div>
+        <div class="cert-desc">Equipo certificado en Meta Blueprint: campañas de Facebook e Instagram, estrategia de embudo completo, retargeting avanzado y optimización de ROAS.</div>
+        <span class="cert-highlight">Meta Blueprint</span>
+      </div>
+
+      <div class="cert-card r d4">
+        <div class="cert-badge">
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+        </div>
+        <div class="cert-org">Google</div>
+        <div class="cert-name">Google Ads Certificado</div>
+        <div class="cert-desc">Certificación oficial en Google Ads: Search, Shopping, Performance Max y Display. Equipo evaluado en gestión de campañas con inversión real y resultados medibles.</div>
+        <span class="cert-highlight">Google Certified</span>
+      </div>
+
+      <div class="cert-card r d1">
+        <div class="cert-badge">
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/></svg>
+        </div>
+        <div class="cert-org">Adobe</div>
+        <div class="cert-name">Diseño con Adobe Creative</div>
+        <div class="cert-desc">Producción creativa con Adobe Creative Suite: diseño de campañas, assets publicitarios, identidad visual y material para todas las plataformas de marketing digital.</div>
+        <span class="cert-highlight">Adobe Creative Suite</span>
+      </div>
+
+      <div class="cert-card r d2">
+        <div class="cert-badge">
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+        </div>
+        <div class="cert-org">LATAM · Equipo</div>
+        <div class="cert-name">15 Años de Experiencia Real</div>
+        <div class="cert-desc">No en agencia genérica. En Ecommerce, tiendas online, influencers y negocios digitales que necesitaban resultados reales. El equipo completo está certificado y sigue actualizándose.</div>
+        <span class="cert-highlight">Equipo certificado</span>
+      </div>
+
+    </div>
+
+  </div>
+</section>
 <hr class="sep">
 
 <!-- ═══ STACK ═══ -->
@@ -716,8 +808,8 @@ footer { border-top:var(--border); padding:2rem clamp(1.25rem,5vw,2.75rem); }
       </div>
 
       <div class="faq-item">
-        <button class="faq-q">¿Por qué Klaviyo y no solo Mailchimp para mi tienda? <span class="faq-icon">+</span></button>
-        <div class="faq-a">Mailchimp es una herramienta de email marketing genérica. Klaviyo está construida específicamente para Ecommerce. La diferencia clave: Klaviyo se sincroniza con Shopify en tiempo real, lo que le permite activar flujos basados en comportamiento real de compra: alguien vio un producto tres veces pero no compró, alguien compró hace 45 días y es momento de reactivarlo, alguien abandonó el carrito con artículos de alto valor. Con Klaviyo bien configurado, entre el 20% y el 40% del revenue total puede atribuirse a email y SMS. Con Mailchimp, eso no es posible.</div>
+        <button class="faq-q">¿Cuándo usar Klaviyo y cuándo Mailchimp? ¿No es lo mismo? <span class="faq-icon">+</span></button>
+        <div class="faq-a">No son lo mismo y cada una tiene su especialidad. Klaviyo está construida para Ecommerce y se integra nativamente con Shopify: segmenta por comportamiento real de compra, activa flujos automáticos de abandono de carrito, post-compra y reactivación, y puede representar entre el 20% y el 40% del revenue total de una tienda bien configurada. Mailchimp, en cambio, encaja mejor con sitios en Squarespace, negocios de servicios o marcas que necesitan comunicación general sin lógica de compra compleja. La regla es simple: si tienes Shopify, necesitas Klaviyo. Si tienes Squarespace o un negocio de servicios, Mailchimp funciona muy bien. Usar la herramienta equivocada para la plataforma equivocada es desperdiciar su potencial — y OutHumans sabe cuál corresponde a cada caso porque trabajamos con ambas.</div>
       </div>
 
       <div class="faq-item">
@@ -817,6 +909,21 @@ document.querySelectorAll('.faq-item').forEach(item => {
     const wasOpen = item.classList.contains('open');
     document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
     if(!wasOpen) item.classList.add('open');
+  });
+});
+
+// Mailto fallback — ensures all email buttons work across all environments
+document.querySelectorAll('a[href^="mailto:"]').forEach(link => {
+  link.addEventListener('click', function(e) {
+    e.preventDefault();
+    const email = '404@outhumans.com';
+    const subject = encodeURIComponent('Diagnóstico OutHumans');
+    const body = encodeURIComponent('Hola, me interesa el diagnóstico gratuito de OutHumans.');
+    try {
+      window.location.href = 'mailto:' + email + '?subject=' + subject + '&body=' + body;
+    } catch(err) {
+      window.open('mailto:' + email + '?subject=' + subject, '_blank');
+    }
   });
 });
 </script>
